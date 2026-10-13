@@ -20,13 +20,17 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          cache: maven
 
-      - name: Run tests and generate coverage
-        run: mvn clean verify
+      - name: Run tests
+        working-directory: Tugas/Tugas04
+        run: mvn test
+
+      - name: Generate coverage report
+        working-directory: Tugas/Tugas04
+        run: mvn jacoco:report
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
-          path: target/site/jacoco/
+          path: Tugas/Tugas04/target/site/jacoco/
