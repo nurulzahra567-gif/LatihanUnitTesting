@@ -20,12 +20,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: maven
 
-      - name: Run tests
-        run: mvn test
-
-      - name: Generate coverage report
-        run: mvn jacoco:report
+      - name: Run tests and generate coverage
+        run: mvn clean verify
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
